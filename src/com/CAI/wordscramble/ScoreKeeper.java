@@ -1,5 +1,14 @@
 package com.CAI.wordscramble;
+
 import java.util.HashMap;
+
+/**
+ * This is the ScoreKeeper object for
+ * the CAI application.
+ * 
+ * @author George Li
+ * @version May 27, 2013
+ */
 
 public class ScoreKeeper {
 
@@ -7,7 +16,9 @@ public class ScoreKeeper {
 	
 	int score;
 	
+	//constructor creates a table of values associated with each letter
 	public ScoreKeeper(){
+		//pairs a multiplier value associated with each letter (from Scrabble letter values)
 		SCORETABLE.put("a",1);
 		SCORETABLE.put("b",3);
 		SCORETABLE.put("c",3);
@@ -37,17 +48,19 @@ public class ScoreKeeper {
 		
 	}
 	
-
+	//update the user's score
 	protected void add(String word){
+		//iterate through each letter adding the associated value for the letter * 100
 		for (int i=0;i<word.length();i++){
 			score+=SCORETABLE.get(word.charAt(i)+"")*100;
 		}
 		
-		if (word.length()==6){
+		if (word.length()==6){   //bonus of 500 for 6-lettered words formed
 			score+=500;
 		}
 	}
 	
+	//returns the user's current score
 	protected int getScore(){
 		return score;
 		
